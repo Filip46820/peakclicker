@@ -99,12 +99,14 @@
 }
 
 /*Info o vylepseni --------------------------------------------------------------------------------------------------------------------*/
+
 .infolist {
     position: fixed;
     left: var(--shopleft);
     top: var(--shoptop);
     z-index: 1;
-}li {
+}
+.ClickInfo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,4 +116,53 @@
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
+    opacity: 0.1;
+}
+.FishingInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    width: 400px;
+    margin-left: 90.8px;
+    margin-top: 20px;
+    margin-bottom: -18.5px;
+    border: 1px solid black;
+    opacity: 0.1;
+}
+.MiningInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    width: 400px;
+    margin-left: 90.8px;
+    margin-top: 20px;
+    margin-bottom: -18.5px;
+    border: 1px solid black;
+    opacity: 0.1;
+}
+.GardeningInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    width: 400px;
+    margin-left: 90.8px;
+    margin-top: 20px;
+    margin-bottom: -18.5px;
+    border: 1px solid black;
+    opacity: 0.1;
+}
+.EngineeringInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    width: 400px;
+    margin-left: 90.8px;
+    margin-top: 20px;
+    margin-bottom: -18.5px;
+    border: 1px solid black;
+    opacity: 0.1;
 }
