@@ -104,6 +104,7 @@
     position: fixed;
     left: var(--shopleft);
     top: var(--shoptop);
+    background:none;
     z-index: 1;
 }
 .ClickInfo{
@@ -111,58 +112,69 @@
     justify-content: center;
     align-items: center;
     height: 140px;
-    width: 400px;
+    width: 0px;
     margin-left: 90.8px;
     margin-top: 20px;
     margin-bottom: -18.5px;
-    border: 1px solid black;
-    opacity: 0.1;
+    outline: 1px solid black;
 }
 .FishingInfo{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 140px;
-    width: 400px;
+    width: 0px;
     margin-left: 90.8px;
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    opacity: 0.1;
 }
 .MiningInfo{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 140px;
-    width: 400px;
+    width: 0px;
     margin-left: 90.8px;
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    opacity: 0.1;
 }
 .GardeningInfo{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 140px;
-    width: 400px;
+    width: 0px;
     margin-left: 90.8px;
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    opacity: 0.1;
 }
 .EngineeringInfo{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 140px;
-    width: 400px;
+    width: 0px;
     margin-left: 90.8px;
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    opacity: 0.1;
+}
+
+
+/*Animace pro otevreni popisku*/
+
+body:has(.Click:hover) .ClickInfo,.ClickInfo:hover,
+body:has(.Fishing:hover) .FishingInfo,.FishingInfo:hover,
+body:has(.Mining:hover) .MiningInfo,.MiningInfo:hover,
+body:has(.Gardening:hover) .GardeningInfo,.GardeningInfo:hover,
+body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
+    animation: slideout 1.2s;
+    animation-fill-mode: forwards;
+}
+@keyframes slideout {
+    0% {width: 0px;}
+    100% {width: 400px;}
 }
