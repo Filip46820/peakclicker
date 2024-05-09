@@ -8,7 +8,13 @@
     padding: 0;
 }
 body{
-    background-color: #597a8a;
+    animation:15s background-movement linear infinite;
+    background:linear-gradient(to right,rgb(16, 127, 187, 0.9),rgb(27, 113, 156),rgba(16, 127, 187, 0.9));
+    background-size:2000%;
+}
+@keyframes background-movement{
+    from{background-position: 0% center }
+    to{background-position: -200% center }
 }
 
 /*Obchod s vylepsenim - ikony --------------------------------------------------------------------------------------------------------------------*/
@@ -26,12 +32,25 @@ body{
     width: 100px;
     margin: 41px;
     rotate: calc(45deg);
-    background-color: #597a8a;
+    background-color: #c5c5c5;
 }a {
     display: block;
     rotate: -45deg;
 }
 
+.Click {
+    position: relative;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 100px;
+    font-size: 30px;
+    overflow: hidden;
+}.Click img {
+    padding-top: 40px;
+    width: 80px;
+    height: 85px;
+    padding-left: 17px;
+}
 .Mining {
     position: relative;
     border: 1px solid black;
@@ -58,20 +77,6 @@ body{
     padding-top: 40px;
     width: 90px;
     height: 95px;
-}
-
-.Click {
-    position: relative;
-    border: 1px solid black;
-    text-align: center;
-    line-height: 100px;
-    font-size: 30px;
-    overflow: hidden;
-}.Click img {
-    padding-top: 40px;
-    width: 80px;
-    height: 85px;
-    padding-left: 17px;
 }
 
 .Gardening {
@@ -120,7 +125,7 @@ body{
     margin-bottom: -18.5px;
     outline: 1px solid black;
     border-radius:5px;
-    background-color: #435a663d;
+    background-color: #d6d6d680;
     overflow:hidden;
 }
 .FishingInfo{
@@ -134,7 +139,7 @@ body{
     margin-bottom: -18.5px;
     border: 1px solid black;
     border-radius:5px;
-    background-color: #435a663d;
+    background-color: #d6d6d680;
     overflow:hidden;
 }
 .MiningInfo{
@@ -148,7 +153,7 @@ body{
     margin-bottom: -18.5px;
     border: 1px solid black;
     border-radius:5px;
-    background-color: #435a663d;
+    background-color: #d6d6d680;
     overflow:hidden;
 }
 .GardeningInfo{
@@ -162,7 +167,7 @@ body{
     margin-bottom: -18.5px;
     border: 1px solid black;
     border-radius:5px;
-    background-color: #435a663d;
+    background-color: #d6d6d680;
     overflow:hidden;
 }
 .EngineeringInfo{
@@ -176,7 +181,7 @@ body{
     margin-bottom: -18.5px;
     border: 1px solid black;
     border-radius:5px;
-    background-color: #435a663d;
+    background-color: #d6d6d680;
     overflow:hidden;
 }
 
