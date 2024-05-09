@@ -119,7 +119,9 @@ body{
     margin-top: 21px;
     margin-bottom: -18.5px;
     outline: 1px solid black;
+    border-radius:5px;
     background-color: #435a663d;
+    overflow:hidden;
 }
 .FishingInfo{
     display: flex;
@@ -131,7 +133,9 @@ body{
     margin-top: 20px;
     margin-bottom: -18.5px;
     border: 1px solid black;
+    border-radius:5px;
     background-color: #435a663d;
+    overflow:hidden;
 }
 .MiningInfo{
     display: flex;
@@ -143,7 +147,9 @@ body{
     margin-top: 19px;
     margin-bottom: -18.5px;
     border: 1px solid black;
+    border-radius:5px;
     background-color: #435a663d;
+    overflow:hidden;
 }
 .GardeningInfo{
     display: flex;
@@ -155,7 +161,9 @@ body{
     margin-top: 19px;
     margin-bottom: -18.5px;
     border: 1px solid black;
+    border-radius:5px;
     background-color: #435a663d;
+    overflow:hidden;
 }
 .EngineeringInfo{
     display: flex;
@@ -167,7 +175,9 @@ body{
     margin-top: 18px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    background-color: #435a66;
+    border-radius:5px;
+    background-color: #435a663d;
+    overflow:hidden;
 }
 
 
@@ -178,7 +188,7 @@ body:has(.Fishing:hover) .FishingInfo,.FishingInfo:hover,
 body:has(.Mining:hover) .MiningInfo,.MiningInfo:hover,
 body:has(.Gardening:hover) .GardeningInfo,.GardeningInfo:hover,
 body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
-    animation: slideout 1.2s;
+    animation: slideout 1s;
     animation-fill-mode: forwards;
 }
 @keyframes slideout {
