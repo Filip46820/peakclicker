@@ -115,37 +115,7 @@ body{
     background:none;
     z-index: 1;
 }
-.ClickInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 141px;
-    width: 0px;
-    margin-left: 92px;
-    margin-top: 21px;
-    margin-bottom: -18.5px;
-    outline: 1px solid black;
-    border-radius:5px;
-    background-color: #d6d6d680;
-    overflow:hidden;
-    white-space: nowrap;
-}
-.FishingInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 141px;
-    width: 0px;
-    margin-left: 91px;
-    margin-top: 20px;
-    margin-bottom: -18.5px;
-    border: 1px solid black;
-    border-radius:5px;
-    background-color: #d6d6d680;
-    overflow:hidden;
-    white-space: nowrap;
-}
-.MiningInfo{
+.infolist li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,39 +125,9 @@ body{
     margin-top: 19px;
     margin-bottom: -18.5px;
     border: 1px solid black;
-    border-radius:5px;
+    border-radius: 5px;
     background-color: #d6d6d680;
-    overflow:hidden;
-    white-space: nowrap;
-}
-.GardeningInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 141px;
-    width: 0px;
-    margin-left: 91px;
-    margin-top: 19px;
-    margin-bottom: -18.5px;
-    border: 1px solid black;
-    border-radius:5px;
-    background-color: #d6d6d680;
-    overflow:hidden;
-    white-space: nowrap;
-}
-.EngineeringInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 141px;
-    width: 0px;
-    margin-left: 91px;
-    margin-top: 18px;
-    margin-bottom: -18.5px;
-    border: 1px solid black;
-    border-radius:5px;
-    background-color: #d6d6d680;
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -205,4 +145,20 @@ body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
 @keyframes slideout {
     0% {width: 0px;}
     100% {width: 400px;}
+}
+.Click:hover,.Fishing:hover,.Mining:hover,.Gardening:hover,.Engineering:hover{
+    transition: box-shadow 0.4s ease-in-out;
+    box-shadow: 0 0 50px #ffffff
+}
+
+/*Animace pro otevreni popisku*/
+body:has(.Click:hover) .ClickInfo,.ClickInfo:hover,
+body:has(.Fishing:hover) .FishingInfo,.FishingInfo:hover,
+body:has(.Mining:hover) .MiningInfo,.MiningInfo:hover,
+body:has(.Gardening:hover) .GardeningInfo,.GardeningInfo:hover,
+body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
+    animation: slideout 0.3s;
+    animation-fill-mode: forwards;
+    transition: box-shadow 0.4s ease-in-out;
+    box-shadow: 0px 0px 50px white;
 }
