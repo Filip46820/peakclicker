@@ -1,7 +1,7 @@
 :root{
     /*Pozice Obchodu s vylepsenim*/
     --shoptop: 10vh; 
-    --shopleft: 72vw;
+    --shopleft: 66vw;
 }
 * {
     margin: 0;
@@ -130,21 +130,15 @@ body{
     overflow: hidden;
     white-space: nowrap;
 }
-
-
-/*Animace pro otevreni popisku*/
-
-body:has(.Click:hover) .ClickInfo,.ClickInfo:hover,
-body:has(.Fishing:hover) .FishingInfo,.FishingInfo:hover,
-body:has(.Mining:hover) .MiningInfo,.MiningInfo:hover,
-body:has(.Gardening:hover) .GardeningInfo,.GardeningInfo:hover,
-body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
-    animation: slideout 1s;
-    animation-fill-mode: forwards;
+p{
+    margin-right:-3.5em;
 }
+
+
+
 @keyframes slideout {
     0% {width: 0px;}
-    100% {width: 400px;}
+    100% {width: 21rem;}
 }
 .Click:hover,.Fishing:hover,.Mining:hover,.Gardening:hover,.Engineering:hover{
     transition: box-shadow 0.4s ease-in-out;
