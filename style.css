@@ -6,6 +6,7 @@
 * {
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 body{
     animation:15s background-movement linear infinite;
@@ -16,6 +17,26 @@ body{
 @keyframes background-movement{
     from{background-position: 0% center }
     to{background-position: -200% center }
+}
+.coin{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.clicked{
+    width: 25dvw;
+    height: 25dvh;
+}
+.mainclicker{
+    position:absolute;
+    top:26%;
+    left:30%;
+}
+.Balance{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size:5vh;
 }
 
 /*Obchod s vylepsenim - ikony --------------------------------------------------------------------------------------------------------------------*/
@@ -134,15 +155,14 @@ p{
     margin-right:-3.5em;
 }
 
-
-
 @keyframes slideout {
     0% {width: 0px;}
     100% {width: 21rem;}
 }
 .Click:hover,.Fishing:hover,.Mining:hover,.Gardening:hover,.Engineering:hover{
     transition: box-shadow 0.4s ease-in-out;
-    box-shadow: 0 0 50px #ffffff
+    box-shadow: 0 0 50px #ffffff;
+    cursor: pointer;
 }
 
 /*Animace pro otevreni popisku*/
@@ -155,4 +175,5 @@ body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
     animation-fill-mode: forwards;
     transition: box-shadow 0.4s ease-in-out;
     box-shadow: 0px 0px 50px white;
+    cursor: pointer;
 }
