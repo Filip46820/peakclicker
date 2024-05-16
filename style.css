@@ -9,14 +9,7 @@
     user-select: none;
 }
 body{
-    animation:15s background-movement linear infinite;
-    background:linear-gradient(to right,rgb(16, 127, 187, 0.9),rgb(27, 113, 156),rgba(16, 127, 187, 0.9));
-    background-size:2000%;
-}
-/*Animace pozadi*/
-@keyframes background-movement{
-    from{background-position: 0% center }
-    to{background-position: -200% center }
+    background: radial-gradient(circle, rgb(76, 154, 185) 30%, rgb(35, 136, 173) 100%);
 }
 .coin{
     width: 100%;
