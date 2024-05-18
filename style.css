@@ -1,9 +1,9 @@
 :root{
-    /*Pozice Obchodu s vylepsenim*/
     --shoptop: 10dvh; 
     --shoptop-small: 0dvh;
     --shopleft: 66dvw;
     --shopleft-small: 55dvw;
+    --shadow-effect: 0px 0px 50px white;
 }
 * {
     margin: 0;
@@ -34,7 +34,20 @@ body{
     font-size:3em;
     width:25dvw;
 }
-
+/*Tlacitka k ulozeni dat --------------------------------------------------------------------------------------------------------------------*/
+form{
+    position: absolute;
+    top:59dvh;
+    left:38.25dvw;
+}
+button{
+    height: 2rem;
+    width:5rem;
+    color:white;
+    background-color: rgba(0, 0, 0, 0.425);
+    cursor: pointer;
+    border: 1px solid white;
+}
 /*Obchod s vylepsenim - ikony --------------------------------------------------------------------------------------------------------------------*/
 .list {
     position: relative;
@@ -51,6 +64,7 @@ body{
     margin: 41px;
     rotate: calc(45deg);
     background-color: rgb(211, 211, 211);
+    cursor: pointer;
 }a {
     display: block;
     rotate: -45deg;
@@ -141,11 +155,11 @@ body{
     margin-left: 91px;
     margin-top: 19px;
     margin-bottom: -18.5px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: #d6d6d680;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.7);
     overflow: hidden;
     white-space: nowrap;
+    color:white;
 }
 p{
     margin-right:-3.5em;
@@ -154,11 +168,6 @@ p{
 @keyframes slideout {
     0% {width: 0px;}
     100% {width: 21rem;}
-}
-.Click:hover,.Fishing:hover,.Mining:hover,.Gardening:hover,.Engineering:hover{
-    transition: box-shadow 0.4s ease-in-out;
-    box-shadow: 0 0 50px #ffffff;
-    cursor: pointer;
 }
 
 /*Animace pro otevreni popisku*/
@@ -170,7 +179,10 @@ body:has(.Engineering:hover) .EngineeringInfo,.EngineeringInfo:hover{
     animation: slideout 0.3s;
     animation-fill-mode: forwards;
     transition: box-shadow 0.4s ease-in-out;
-    box-shadow: 0px 0px 50px white;
+    box-shadow: var(--shadow-effect);
+    cursor: pointer;
+}
+.Click:hover,.Fishing:hover,.Mining:hover,.Gardening:hover,.Engineering:hover{
     cursor: pointer;
 }
 
