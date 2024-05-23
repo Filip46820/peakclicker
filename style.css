@@ -36,9 +36,9 @@ body{
 }
 /*Tlacitka k ulozeni dat --------------------------------------------------------------------------------------------------------------------*/
 form{
-    position: absolute;
-    top:59dvh;
-    left:38.25dvw;
+    position: relative;
+    width: fit-content;
+    margin: auto;
 }
 button{
     height: 2rem;

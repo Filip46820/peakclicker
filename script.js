@@ -44,11 +44,40 @@ const ClickerData = {
         },
     ],
 };
+//Prelozi cislo na zkracenou formu podle poctu mist => 1k = 1000
+const prefixes = [
+    {divider:1e3,suffix:'k'},
+    {divider:1e6,suffix:'M'},
+    {divider:1e9,suffix:'G'},
+    {divider:1e12,suffix:'T'},
+    {divider:1e15,suffix:'Qa'},
+    {divider:1e18,suffix:'Qi'},
+    {divider:1e21,suffix:'Sx'},
+    {divider:1e24,suffix:'Sp'},
+    {divider:1e27,suffix:'Oc'},
+    {divider:1e30,suffix:'N'},
+    {divider:1e33,suffix:'Dc'},
+    {divider:1e36,suffix:'Udc'},
+    {divider:1e39,suffix:'Ddc'},
+    {divider:1e42,suffix:'Tdc'},
+    {divider:1e45,suffix:'Qdc'},
+];
+function format(Balance){
+for(let i=0;i<prefixes.length;i++){
+    if(Balance>prefixes[i].divider){
+        document.querySelector('.CurrentBalance').innerHTML=(Balance/prefixes[i].divider)+prefixes[i].suffix;
+    }else{
+        document.querySelector('.CurrentBalance').innerHTML=Balance;
+    }
+}
+}
+
 
 //  Zakladni funkce pro přidani peněz za kliknutí
 function Userclicking(){
     const ClickUpgradesOwned = ClickerData.upgrades[0].owned;
     ClickerData.balance += 1 + ClickUpgradesOwned;
+    format(ClickerData.balance);
     document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
 }
 
@@ -60,7 +89,7 @@ function BuyUpgrade(UpgradeIndex){
         ClickerData.balance -= UpgradeNextCost;
         Upgrade.owned++;
         Upgrade.costNext=Math.ceil(Upgrade.costBase*(Math.pow(Upgrade.rateGrowth, Upgrade.owned)));
-        document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
+        format(ClickerData.balance);
         document.querySelector(`.${Upgrade.name}-owned`).innerHTML = Upgrade.owned;
         document.querySelector(`.${Upgrade.name}-price`).innerHTML = Upgrade.costNext;
     }else{
@@ -70,7 +99,7 @@ function BuyUpgrade(UpgradeIndex){
 setInterval(function(){
     ClickerData.upgrades.forEach(Upgrade =>{
         ClickerData.balance += Upgrade.perSecond*Upgrade.owned;
-        document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
+        format(ClickerData.balance);
     })
 },1000);
 
@@ -91,7 +120,7 @@ function save(){
 function load(){
     if(localStorage.getItem('balance')!==null){
         ClickerData.balance = parseFloat(localStorage.getItem('balance'));
-        document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
+        format(ClickerData.balance);
     }else{
         alert("Zadny save nenalezen");
     }
@@ -108,14 +137,12 @@ function load(){
 
 // Add format for numbers? 1000=1k
 // Prestige?
-// Load?
-// Reset progress?
 // Talents/Perks?
 
 /*  Funkce pro nastaveni peněz přes konzoli
     Pro použití - GameEarn(cislo) do konzole    */
 function GameEarn(Number){
     ClickerData.balance += Number;
-    document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
+    format(ClickerData.balance);
     return ClickerData.balance; //Bez toho - Undefined
 }
