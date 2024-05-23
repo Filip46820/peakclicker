@@ -44,11 +44,11 @@ const ClickerData = {
         },
     ],
 };
-//Prelozi cislo na zkracenou formu podle poctu mist => 1k = 1000
 const prefixes = [
+    {divider:1,suffix:''},
     {divider:1e3,suffix:'k'},
     {divider:1e6,suffix:'M'},
-    {divider:1e9,suffix:'G'},
+    {divider:1e9,suffix:'B'},
     {divider:1e12,suffix:'T'},
     {divider:1e15,suffix:'Qa'},
     {divider:1e18,suffix:'Qi'},
@@ -62,14 +62,18 @@ const prefixes = [
     {divider:1e42,suffix:'Tdc'},
     {divider:1e45,suffix:'Qdc'},
 ];
+//Prelozi cislo na zkracenou formu podle poctu mist => 1k = 1000...
 function format(Balance){
+    if(Balance==1){
+        document.querySelector('.CurrentBalance').innerHTML=Balance.toFixed(2);
+        return;
+    }
 for(let i=0;i<prefixes.length;i++){
     if(Balance>prefixes[i].divider){
-        document.querySelector('.CurrentBalance').innerHTML=(Balance/prefixes[i].divider)+prefixes[i].suffix;
-    }else{
-        document.querySelector('.CurrentBalance').innerHTML=Balance;
+        document.querySelector('.CurrentBalance').innerHTML=(Balance/prefixes[i].divider).toFixed(2)+prefixes[i].suffix;
     }
 }
+return;
 }
 
 
@@ -78,7 +82,6 @@ function Userclicking(){
     const ClickUpgradesOwned = ClickerData.upgrades[0].owned;
     ClickerData.balance += 1 + ClickUpgradesOwned;
     format(ClickerData.balance);
-    document.querySelector('.CurrentBalance').innerHTML=ClickerData.balance;
 }
 
 //  Funkce pro zakoupeni vylepšení
@@ -87,9 +90,9 @@ function BuyUpgrade(UpgradeIndex){
     const UpgradeNextCost = Math.ceil(Upgrade.costBase*(Math.pow(Upgrade.rateGrowth, Upgrade.owned)));
     if(ClickerData.balance >= UpgradeNextCost){
         ClickerData.balance -= UpgradeNextCost;
+        format(ClickerData.balance);
         Upgrade.owned++;
         Upgrade.costNext=Math.ceil(Upgrade.costBase*(Math.pow(Upgrade.rateGrowth, Upgrade.owned)));
-        format(ClickerData.balance);
         document.querySelector(`.${Upgrade.name}-owned`).innerHTML = Upgrade.owned;
         document.querySelector(`.${Upgrade.name}-price`).innerHTML = Upgrade.costNext;
     }else{
@@ -103,6 +106,8 @@ setInterval(function(){
     })
 },1000);
 
+
+/*Funkce pro načtení a uložení všeho*/
 function save(){
     localStorage.clear();
     ClickerData.upgrades.map((upgrades) => {
@@ -135,7 +140,7 @@ function load(){
     });
 }
 
-// Add format for numbers? 1000=1k
+
 // Prestige?
 // Talents/Perks?
 
