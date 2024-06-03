@@ -2,6 +2,9 @@
 const ClickerData = {
     balance: 0,
     prestige: 0,
+    prestigebase: 100000,
+    presigemulti: 1.05,
+    prestigesscale: 5,
     upgrades: [
         {
             name: "click",
@@ -143,7 +146,6 @@ function load(){
 }
 
 
-// Prestige?
 
 /*  Funkce pro nastaveni peněz přes konzoli
     Pro použití - GameEarn(cislo) do konzole    */

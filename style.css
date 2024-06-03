@@ -41,6 +41,9 @@ form{
     margin: auto;
     margin-top:1rem;
 }
+.Prestigetxt{
+    color: white;
+}
 button{
     height: 2rem;
     width:5rem;
