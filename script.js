@@ -1,6 +1,7 @@
 //  Zakladni data pro vylepšení a peníze
 const ClickerData = {
     balance: 0,
+    prestige: 0,
     upgrades: [
         {
             name: "click",
@@ -63,17 +64,16 @@ const prefixes = [
     {divider:1e45,suffix:'Qdc'},
 ];
 //Prelozi cislo na zkracenou formu podle poctu mist => 1k = 1000...
-function format(Balance){
+function formatbal(Balance){
     if(Balance==1){
-        document.querySelector('.CurrentBalance').innerHTML=Balance.toFixed(2);
-        return;
+        return Balance.toFixed(2);
     }
-for(let i=0;i<prefixes.length;i++){
-    if(Balance>prefixes[i].divider){
-        document.querySelector('.CurrentBalance').innerHTML=(Balance/prefixes[i].divider).toFixed(2)+prefixes[i].suffix;
+    for(let i=prefixes.length-1; i>=0; i--){
+        if(Balance>=prefixes[i].divider){
+            return ((Balance/prefixes[i].divider).toFixed(2)+prefixes[i].suffix);
+        }
     }
-}
-return;
+    return;
 }
 
 
@@ -81,7 +81,7 @@ return;
 function Userclicking(){
     const ClickUpgradesOwned = ClickerData.upgrades[0].owned;
     ClickerData.balance += 1 + ClickUpgradesOwned;
-    format(ClickerData.balance);
+    document.querySelector('.CurrentBalance').innerHTML = formatbal(ClickerData.balance);
 }
 
 //  Funkce pro zakoupeni vylepšení
@@ -90,11 +90,11 @@ function BuyUpgrade(UpgradeIndex){
     const UpgradeNextCost = Math.ceil(Upgrade.costBase*(Math.pow(Upgrade.rateGrowth, Upgrade.owned)));
     if(ClickerData.balance >= UpgradeNextCost){
         ClickerData.balance -= UpgradeNextCost;
-        format(ClickerData.balance);
+        document.querySelector('.CurrentBalance').innerHTML = formatbal(ClickerData.balance);
         Upgrade.owned++;
         Upgrade.costNext=Math.ceil(Upgrade.costBase*(Math.pow(Upgrade.rateGrowth, Upgrade.owned)));
         document.querySelector(`.${Upgrade.name}-owned`).innerHTML = Upgrade.owned;
-        document.querySelector(`.${Upgrade.name}-price`).innerHTML = Upgrade.costNext;
+        document.querySelector(`.${Upgrade.name}-price`).innerHTML = formatbal(Upgrade.costNext);
     }else{
         alert("Not enough money to buy this upgrade");
     }
@@ -102,7 +102,7 @@ function BuyUpgrade(UpgradeIndex){
 setInterval(function(){
     ClickerData.upgrades.forEach(Upgrade =>{
         ClickerData.balance += Upgrade.perSecond*Upgrade.owned;
-        format(ClickerData.balance);
+        document.querySelector('.CurrentBalance').innerHTML = formatbal(ClickerData.balance);
     })
 },1000);
 
@@ -119,23 +119,25 @@ function save(){
         localStorage.setItem(upgrades.name, obj);
     });
     localStorage.setItem('balance', JSON.stringify(ClickerData.balance));
+    localStorage.setItem('prestige', JSON.stringify(ClickerData.prestige));
     console.log(localStorage);
 }
 
 function load(){
     if(localStorage.getItem('balance')!==null){
         ClickerData.balance = parseFloat(localStorage.getItem('balance'));
-        format(ClickerData.balance);
+        document.querySelector('.CurrentBalance').innerHTML = formatbal(ClickerData.balance);
     }else{
         alert("Zadny save nenalezen");
     }
+    ClickerData.prestige = parseFloat(localStorage.getItem('prestige'));
     ClickerData.upgrades.map((upgrades) => {
         if(localStorage.getItem(upgrades.name)!==null){
             const SavedData = JSON.parse(localStorage.getItem(upgrades.name));
             upgrades.owned = SavedData.SOwned;
             upgrades.costNext = SavedData.SCostNext;
             document.querySelector(`.${upgrades.name}-owned`).innerHTML = upgrades.owned;
-            document.querySelector(`.${upgrades.name}-price`).innerHTML = upgrades.costNext;
+            document.querySelector(`.${upgrades.name}-price`).innerHTML = formatbal(upgrades.costNext);
         }
     });
 }
@@ -148,6 +150,6 @@ function load(){
     Pro použití - GameEarn(cislo) do konzole    */
 function GameEarn(Number){
     ClickerData.balance += Number;
-    format(ClickerData.balance);
+    document.querySelector('.CurrentBalance').innerHTML = formatbal(ClickerData.balance);
     return ClickerData.balance; //Bez toho - Undefined
 }
