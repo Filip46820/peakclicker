@@ -73,7 +73,7 @@ function formatbal(Balance){
             return ((Balance/prefixes[i].divider).toFixed(2)+prefixes[i].suffix);
         }
     }
-    return;
+    return Balance;
 }
 
 
@@ -144,7 +144,6 @@ function load(){
 
 
 // Prestige?
-// Talents/Perks?
 
 /*  Funkce pro nastaveni peněz přes konzoli
     Pro použití - GameEarn(cislo) do konzole    */
